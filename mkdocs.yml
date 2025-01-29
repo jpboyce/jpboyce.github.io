@@ -1,6 +1,10 @@
 site_name: JustAnotherBlog
 theme:
   name: material
+markdown_extensions:
+  - admonition
+  - pymdownx.superfences
+  - pymdownx.details
 plugins:
   - search
   - glightbox
