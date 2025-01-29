@@ -1,0 +1,21 @@
+site_name: JustAnotherBlog
+theme:
+  name: material
+plugins:
+  - search
+  - glightbox
+  - blog:
+      archive_date_format: yyyy
+      archive_toc: false
+      authors: false
+      blog_dir: .
+  - tags: 
+      tags_file: tags.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/jpboyce
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/jpboyce/  
+
