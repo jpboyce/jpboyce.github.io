@@ -8,6 +8,8 @@ tags:
   - vrealize orchestration
   - powershell
 ---
+# vRealize Orchestrator – PowerShell Hosts
+
 PowerShell Hosts are one of the types of endpoint available in vRealize Orchestrator’s Inventory. By having a PowerShell Host, you can leverage the breadth of PowerShell functionality from within your vRealize Orchestrator workflows. In this article, I’ll run through adding a PowerShell Host as well as some considerations from a technical and security point of view.
 
 Adding A PowerShell Host
