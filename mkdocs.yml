@@ -18,6 +18,7 @@ markdown_extensions:
 plugins:
   - search
   - glightbox
+  - optimize
   - blog:
       archive_date_format: yyyy
       archive_toc: false
