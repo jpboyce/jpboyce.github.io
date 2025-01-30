@@ -5,11 +5,11 @@ theme:
     - scheme: default
       toggle: 
         icon: material/brightness-7
-        name: Dark Mode
+        name: Switch to Dark Mode
     - scheme: slate
       toggle: 
         icon: material/brightness-4
-        name: Light Mode
+        name: Switch to Light Mode
   
 markdown_extensions:
   - admonition
