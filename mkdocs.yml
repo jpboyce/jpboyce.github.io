@@ -1,6 +1,16 @@
 site_name: JustAnotherBlog
 theme:
   name: material
+  palette: 
+    - scheme: default
+      toggle: 
+        icon: material/brightness-7
+        name: Dark Mode
+    - scheme: slate
+      toggle: 
+        icon: material/brightness-4
+        name: Light Mode
+  
 markdown_extensions:
   - admonition
   - pymdownx.superfences
