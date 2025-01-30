@@ -31,5 +31,9 @@ extra:
     - icon: fontawesome/brands/github
       link: https://github.com/jpboyce
     - icon: fontawesome/brands/linkedin
-      link: https://www.linkedin.com/in/jpboyce/  
+      link: https://www.linkedin.com/in/jpboyce/
+  consent:
+    title: Cookie consent
+    description: >-
+      This website uses cookies to ensure you get the best experience on our website.
 
