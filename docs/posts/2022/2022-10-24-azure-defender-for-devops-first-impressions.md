@@ -17,55 +17,55 @@ The recent batch of high profile security incidents at various companies in Aust
 ## Setup
 When navigating to the Defender for Cloud interface, a new option will appear under the “Cloud Security” heading.
 
-![Image](../media/2022-10-24-001.png)
+![Image](/media/2022-10-24-001.png)
 
 Once we click on this, we are presented with an intro splash page with steps to getting started. The first step is to connect to the environments. Both Azure DevOps and Github repositories are supported environments.
 
 <!-- more -->
-![Image](../media/2022-10-24-002.png)
+![Image](/media/2022-10-24-002.png)
 
 After clicking on the Add Connector button, we are presented with the Environment settings page. I found this screeen a bit confusing as it wasn’t immediately obvious how to see the new environment. The documentation (at the time of writing this post) doens’t cover this stage of setup. The trick is to click on the Add Environment button and select the appropropriate option. In my case, I’ll use Azure DevOps.
 
-![Image](../media/2022-10-24-003.png)
+![Image](/media/2022-10-24-003.png)
 
 Next we are presented with a standard style of wizard for setting up a new Azure resource, with the first page asking for a name, subscription, resource group and region. As the form indicates, the only available region is Central US.
 
-![Image](../media/2022-10-24-004.png)
+![Image](/media/2022-10-24-004.png)
 
 The next step of the wizard lists what plan to use. At the moment this section is fairly basic and the plan is free. There will probably be more options when this offering goes live.
 
 
-![Image](../media/2022-10-24-005.png)
+![Image](/media/2022-10-24-005.png)
 
 The third step is to authorise Defender for DevOps on the target. An authorise button is presented.
 
 
-![Image](../media/2022-10-24-006.png)
+![Image](/media/2022-10-24-006.png)
 
 When the button is clicked, a window will appear with details of what permissions will be needed. The majority of the permissions are only read, but a few are write access as well. If all this is ok, click the Accept button at the bottom. The Authorisation Connection screen will now have some additional details, such as the organisation and what projects should be used. A summary of the permissions are also listed. I opted to use the auto-discovery option to cover all projects.
 
 
-![Image](../media/2022-10-24-007.png)
+![Image](/media/2022-10-24-007.png)
 
 Lastly, like every Azure wizard, we get a Review and create screen with a create button. For me, the creation process took about 3 minutes. Once done, we are redirected back to the Environment settings screen. The Azure DevOps item is now listed.
 
 
-![Image](../media/2022-10-24-008.png)
+![Image](/media/2022-10-24-008.png)
 
 If we go back to the Defender for Cloud interface, the DevOps Security blade should be updated with an overview of our environment. At this stage, it won’t really show much of value because further configuration is needed.
 
 
-![Image](../media/2022-10-24-009.png)
+![Image](/media/2022-10-24-009.png)
 
 ## Pipeline Configuration
 The second item on the Get Started list was about configuring pipelines. For Azure DevOps, this means installing an extension. Navigate to Azure DevOps and click on the shopping bag icon in the top right, then Manage Extensions.
 
 
-![Image](../media/2022-10-24-010.png)
+![Image](/media/2022-10-24-010.png)
 
 At this point, the Microsoft documentation indicated that the extension should be listed under the Shared tab. For me, this area was blank. So I clicked on the Browse Marketplace button and was able to find it.
 
-![Image](../media/2022-10-24-011.png)
+![Image](/media/2022-10-24-011.png)
 
 At this point, we can click on it, review the information and install it. At this point, we can create a new pipeline or edit an existing one to use the new tasks provided by the extension. To start with, I’ll use the example provided by Microsoft’s documentation.
 ``` yaml
@@ -99,11 +99,11 @@ Fortunately it’s possible to add some constraints to the tools used in the pip
 Another example of focused scanning is for secrets. This is done by setting the category value to “secrets” in the pipeline code. When I put a variable named “password” in one of my Bicep files, the secret scanning picked it up as a potential credential.
 
 
-![Image](../media/2022-10-24-012.png)
+![Image](/media/2022-10-24-012.png)
 
 There is an extension that can display SARIF file output inline with the pipeline run. When this particular run is viewed in that interface, we get a nice summary of the same items.
 
-![Image](../media/2022-10-24-013.png)
+![Image](/media/2022-10-24-013.png)
 
 The landing page in Defender for Cloud will also update with details of issues as they’re found.
 
@@ -112,26 +112,26 @@ The landing page in Defender for Cloud will also update with details of issues a
 ## Enabling Pull Request Annotations
 So far the visibility of issues may be isolated from developers. They are likely not to have access to the Defender for Cloud interface and they may not always check CI-based pipelines that you might setup to perform general checks on code commits. Defender for DevOps can create visibility in Pull Requests by creating annotations. For Azure DevOps this is done by configuring settings in Azure DevOps itself and Defender for Cloud. For the first area, this requires setting a Build Validation pipeline.
 
-![Image](../media/2022-10-24-014.png)
+![Image](/media/2022-10-24-014.png)
 
 The second configuration is in Defender for DevOps. In the landing page, tick all the relevant repositories and click on the Configure button.
 
 
-![Image](../media/2022-10-24-015.png)
+![Image](/media/2022-10-24-015.png)
 
 In the window that appears, set the Pull Request Annotations slider to On. At the moment, the Category and Severity levels are fixed and can’t be changed. Click the Save button.
 
-![Image](../media/2022-10-24-016.png)
+![Image](/media/2022-10-24-016.png)
 
 After configuring all this, we will see some different behaviour when performing a pull request. Firstly, as expected, the Build Validation pipeline will run. If there is an item picked up, it will be added as a comment in the Pull Request, like shown below:
 
-![Image](../media/2022-10-24-017.png)
+![Image](/media/2022-10-24-017.png)
 
 The status of the comment can be changed to values like “Pending”, “Won’t fix”, “Closed”. One issue I did experience with the default settings is that a user can still complete the Pull Request even if an item is found. There’s two possible ways to resolve this. Firstly, the Build Validation pipeline didn’t register a non-successful exit code when it ran so Azure DevOps percieved the validation process as passing. If it had failed, and the validation was set to required, then it would’ve blocked the ability to complete the Pull Request.
 
 The other option is by default, the “Check for comment resolution” setting on repositories is disabled. When set to enable, it will become another check in the process and block completion of the Pull Request.
 
-![Image](../media/2022-10-24-018.png)
+![Image](/media/2022-10-24-018.png)
 
 ## Final Thoughts
 Apart from the initial stumbling block with how to create the connection, the documentation and UI were generally clear and easy to use. The supported file types for the secret scanning is comprehensive and should cover most environments. There appears to be support for scanning container images, but the open source tools used don’t appear to do anything for PowerShell.
