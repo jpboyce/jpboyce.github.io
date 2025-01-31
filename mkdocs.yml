@@ -24,6 +24,7 @@ plugins:
       authors: false
       blog_dir: .
       blog_toc: true
+      draft_if_future_date: true
   - tags: 
       tags_file: tags.md
 
