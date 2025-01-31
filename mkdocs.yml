@@ -23,6 +23,7 @@ plugins:
       archive_toc: false
       authors: false
       blog_dir: .
+      blog_toc: true
   - tags: 
       tags_file: tags.md
 
