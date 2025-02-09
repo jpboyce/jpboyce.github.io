@@ -1,0 +1,2238 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../packer/">
+      
+      
+        <link rel="next" href="../rest-api/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.3">
+    
+    
+      
+        <title>Powershell - JustAnotherBlog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.d7758b05.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#powershell" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="JustAnotherBlog" class="md-header__button md-logo" aria-label="JustAnotherBlog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            JustAnotherBlog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Powershell
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to Dark Mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to Dark Mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to Light Mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to Light Mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="JustAnotherBlog" class="md-nav__button md-logo" aria-label="JustAnotherBlog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    JustAnotherBlog
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tags/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tags
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Archive
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Archive
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../archive/2025/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2025
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../archive/2023/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2023
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../archive/2022/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2022
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../archive/2021/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2021
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../archive/2020/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2020
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../archive/2019/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2019
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../archive/2018/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2018
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../archive/2017/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2017
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../archive/2016/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2016
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../archive/2015/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2015
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Categories
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Categories
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../api-management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    API Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../automation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Automation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Azure
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-devops/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Azure DevOps
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../bicep/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bicep
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../blizzcon/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Blizzcon
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../conference/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Conference
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../defender-for-cloud/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Defender for Cloud
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../devops/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DevOps
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../emc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    EMC
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../elasticsearch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ElasticSearch
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../games/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Games
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../home-lab/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home Lab
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../horizon/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Horizon
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../it/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../it-industry/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IT Industry
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../lifecycle-manager/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lifecycle Manager
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../nsx/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NSX
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../nexpose/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Nexpose
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../nutanix/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Nutanix
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../packer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Packer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+      
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Powershell
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Powershell
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#security-agencies-issue-powershell-guidance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Agencies Issue PowerShell Guidance
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clearing-imperva-cloud-waf-cache-using-powershell" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clearing Imperva Cloud WAF Cache using Powershell
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#powershell-quality-of-life-improvements-ps-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      PowerShell Quality of Life Improvements – PS Repository
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#powershell-quality-of-life-improvements-release" class="md-nav__link">
+    <span class="md-ellipsis">
+      PowerShell Quality of Life Improvements – Release
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#powershell-quality-of-life-improvements-automatic-versioning" class="md-nav__link">
+    <span class="md-ellipsis">
+      PowerShell Quality of Life Improvements – Automatic Versioning
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#powershell-quality-of-life-improvements-code-signing" class="md-nav__link">
+    <span class="md-ellipsis">
+      PowerShell Quality of Life Improvements – Code Signing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#powershell-quality-of-life-improvements-code-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      PowerShell Quality of Life Improvements – Code Testing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vravro-81-powershell-peaking-under-the-hood" class="md-nav__link">
+    <span class="md-ellipsis">
+      vRA/vRO 8.1 Powershell – Peaking Under The Hood
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bulk-add-flavor-mappings-using-vra-8-rest-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bulk Add Flavor Mappings Using vRA 8 REST API
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#powershell-70-cmdlet-compatibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      PowerShell 7.0 – Cmdlet Compatibility
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../rest-api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    REST API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql-server/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SQL Server
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../security/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Security
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../storage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Storage
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../system-center-orchestrator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Center Orchestrator
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../telstra/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Telstra
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../vcsa/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VCSA
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmware/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VMware
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../vcenter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    vCenter
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../vrealize-automation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    vRealize Automation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../vrealize-orchestration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    vRealize Orchestration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../vrealize-orchestrator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    vRealize Orchestrator
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#security-agencies-issue-powershell-guidance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Agencies Issue PowerShell Guidance
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clearing-imperva-cloud-waf-cache-using-powershell" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clearing Imperva Cloud WAF Cache using Powershell
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#powershell-quality-of-life-improvements-ps-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      PowerShell Quality of Life Improvements – PS Repository
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#powershell-quality-of-life-improvements-release" class="md-nav__link">
+    <span class="md-ellipsis">
+      PowerShell Quality of Life Improvements – Release
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#powershell-quality-of-life-improvements-automatic-versioning" class="md-nav__link">
+    <span class="md-ellipsis">
+      PowerShell Quality of Life Improvements – Automatic Versioning
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#powershell-quality-of-life-improvements-code-signing" class="md-nav__link">
+    <span class="md-ellipsis">
+      PowerShell Quality of Life Improvements – Code Signing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#powershell-quality-of-life-improvements-code-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      PowerShell Quality of Life Improvements – Code Testing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vravro-81-powershell-peaking-under-the-hood" class="md-nav__link">
+    <span class="md-ellipsis">
+      vRA/vRO 8.1 Powershell – Peaking Under The Hood
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bulk-add-flavor-mappings-using-vra-8-rest-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bulk Add Flavor Mappings Using vRA 8 REST API
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#powershell-70-cmdlet-compatibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      PowerShell 7.0 – Cmdlet Compatibility
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+  <div class="md-content" data-md-component="content">
+    <div class="md-content__inner">
+      <header class="md-typeset">
+        <h1 id="powershell">Powershell</h1>
+      </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2022-08-22 00:00:00+00:00">August 22, 2022</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="./" class="md-meta__link">Powershell</a>, 
+              <a href="../security/" class="md-meta__link">Security</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              1 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="security-agencies-issue-powershell-guidance"><a class="toclink" href="../../2022/08/22/security-agencies-issue-powershell-guidance/">Security Agencies Issue PowerShell Guidance</a></h2>
+<p>PowerShell has historically presented some challenges with security. This can lead to the temptation of disabling it outright, removing an avenue of attack opportunities. Recently, <a href="https://www.itnews.com.au/news/dont-remove-powershell-us-uk-and-nz-security-agencies-581763">a number of government security agencies issued recommendations</a> relating to PowerShell.</p>
+
+    
+      <nav class="md-post__action">
+        <a href="../../2022/08/22/security-agencies-issue-powershell-guidance/">
+          Continue reading
+        </a>
+      </nav>
+    
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2022-06-13 00:00:00+00:00">June 13, 2022</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="./" class="md-meta__link">Powershell</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              3 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="clearing-imperva-cloud-waf-cache-using-powershell"><a class="toclink" href="../../2022/06/13/clearing-imperva-cloud-waf-cache-using-powershell/">Clearing Imperva Cloud WAF Cache using Powershell</a></h2>
+<p>Imperva’s cloud-based Web Application Firewall (WAF), previously known as Incapsula, provides protection capabilities as well as caching of website content. In some situations, it may be necessary to clear the cache. This can be easily achieved by using Powershell to interact with Imperva’s REST API.</p>
+
+    
+      <nav class="md-post__action">
+        <a href="../../2022/06/13/clearing-imperva-cloud-waf-cache-using-powershell/">
+          Continue reading
+        </a>
+      </nav>
+    
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2022-04-03 00:00:00+00:00">April 3, 2022</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="./" class="md-meta__link">Powershell</a>, 
+              <a href="../azure-devops/" class="md-meta__link">Azure DevOps</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              2 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="powershell-quality-of-life-improvements-ps-repository"><a class="toclink" href="../../2022/04/03/powershell-quality-of-life-improvements--ps-repository/">PowerShell Quality of Life Improvements – PS Repository</a></h2>
+<p>In the last post, we were able to create a Release Pipeline that takes checked and signed Powershell code and deploys it to target servers. In some situations, it may not be desirable or viable to have every server configured as a deployment target. Or there may be a need to have an additional amount of control of the modules that a server gets. To deal with these issues, we can look at setting up a PowerShell Respoistory as an intermediatory step.</p>
+<h3 id="setting-up-the-respository"><a class="toclink" href="../../2022/04/03/powershell-quality-of-life-improvements--ps-repository/#setting-up-the-respository">Setting Up The Respository</a></h3>
+<p>The Respository can be as simple as a file share on a server. At the higher end of complexity, it can be a website running NuGet Gallery. For this case, I’ve gone simple. By using a file share, we negate the need for setting up API keys and the like that a NuGet Gallery would need.</p>
+<p>Once the PowerShell Respoistory is created, it needs to be registered on the relevant targets. This is achieved using the Register-PSRepository cmdlet, as shown below:</p>
+<p><code>Register-PSRepository -Name psqol -SourceLocation "\\svr14\psrepo\" -PublishLocation "\\svr14\psrepo\" -InstallationPolicy Trusted</code>
+If the InstallationPolicy value is set to “Untrusted”, then there will be a user prompt when attempting to install modules from the Repository.</p>
+
+    
+      <nav class="md-post__action">
+        <a href="../../2022/04/03/powershell-quality-of-life-improvements--ps-repository/">
+          Continue reading
+        </a>
+      </nav>
+    
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2022-03-27 00:00:00+00:00">March 27, 2022</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="./" class="md-meta__link">Powershell</a>, 
+              <a href="../azure-devops/" class="md-meta__link">Azure DevOps</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              4 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="powershell-quality-of-life-improvements-release"><a class="toclink" href="../../2022/03/27/powershell-quality-of-life-improvements--release/">PowerShell Quality of Life Improvements – Release</a></h2>
+<p>Releasing a build is typically the final step in the process of developing code. For PowerShell, this takes the form of getting our signed scripts and modules onto target servers to be available for use. This can be easily achieved in Azure DevOps.</p>
+<h3 id="deployment-groupstargets"><a class="toclink" href="../../2022/03/27/powershell-quality-of-life-improvements--release/#deployment-groupstargets">Deployment Groups/Targets</a></h3>
+<p>The deployment tasks will run on the targets will recieve the scripts. Before that, a Deployment Group needs to be created. This is done by navigating to Pipelines &gt; Deplyment Groups and clicking “Add new deployment group”. The group needs to be given a name.
+<img alt="Deployment Targets" src="../../media/2022-03-27-001.png" /></p>
+
+    
+      <nav class="md-post__action">
+        <a href="../../2022/03/27/powershell-quality-of-life-improvements--release/">
+          Continue reading
+        </a>
+      </nav>
+    
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2022-03-20 00:00:00+00:00">March 20, 2022</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="./" class="md-meta__link">Powershell</a>, 
+              <a href="../azure-devops/" class="md-meta__link">Azure DevOps</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              2 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="powershell-quality-of-life-improvements-automatic-versioning"><a class="toclink" href="../../2022/03/20/powershell-quality-of-life-improvements--automatic-versioning/">PowerShell Quality of Life Improvements – Automatic Versioning</a></h2>
+<p>Once we start doing processes like putting PowerShell code into git repositories, signing it and effectively creating new versions of it, it becomes useful to be able to automatically manage the versioning of our scripts and modules. The version number acts as an easy visual indicator of whether the script is the latest or not.</p>
+<h3 id="introducing-token-replacement"><a class="toclink" href="../../2022/03/20/powershell-quality-of-life-improvements--automatic-versioning/#introducing-token-replacement">Introducing Token Replacement</a></h3>
+<p>Since the version number will change with each “build”, we will want to put in some sort of place holder value – a token. In my sample module, I change the version value to reference this token:</p>
+<div class="highlight"><pre><span></span><code><span class="c"># Version number of this module.</span>
+<span class="n">ModuleVersion</span> <span class="p">=</span> <span class="s1">&#39;#{fullVersion}#&#39;</span>
+</code></pre></div>
+
+    
+      <nav class="md-post__action">
+        <a href="../../2022/03/20/powershell-quality-of-life-improvements--automatic-versioning/">
+          Continue reading
+        </a>
+      </nav>
+    
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2022-03-13 00:00:00+00:00">March 13, 2022</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="./" class="md-meta__link">Powershell</a>, 
+              <a href="../azure-devops/" class="md-meta__link">Azure DevOps</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              3 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="powershell-quality-of-life-improvements-code-signing"><a class="toclink" href="../../2022/03/13/powershell-quality-of-life-improvements--code-signing/">PowerShell Quality of Life Improvements – Code Signing</a></h2>
+<p>PowerShell uses Execution Policies to control whether a script can be run or not. Some of these policies rely on scripts being digitally signed by a trusted publisher. By signing your scripts, you can look at implementing a more restrictive Execution Policy that increases security. The first step in this process is getting a certificate.</p>
+<h3 id="code-signing-certificate"><a class="toclink" href="../../2022/03/13/powershell-quality-of-life-improvements--code-signing/#code-signing-certificate">Code Signing Certificate</a></h3>
+<p>To sign your scripts, you need a special type of certificate, one for code signing. If your scripts will be for internal use only and your organisation has an internal PKI, then using a code signing certificate from that PKI will be enough. If you are writing scripts or modules for consumption by a broader audience, then you’ll need a code signing certificate from a 3rd party Certificate Authority.</p>
+
+    
+      <nav class="md-post__action">
+        <a href="../../2022/03/13/powershell-quality-of-life-improvements--code-signing/">
+          Continue reading
+        </a>
+      </nav>
+    
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2022-03-06 00:00:00+00:00">March 6, 2022</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="./" class="md-meta__link">Powershell</a>, 
+              <a href="../azure-devops/" class="md-meta__link">Azure DevOps</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              4 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="powershell-quality-of-life-improvements-code-testing"><a class="toclink" href="../../2022/03/06/powershell-quality-of-life-improvements--code-testing/">PowerShell Quality of Life Improvements – Code Testing</a></h2>
+<p>PowerShell has been around for 15 years now. One of the changes that has happened in the IT industry in that time is the rise of DevOps, and the associated tools and technology with it. If we consider the process of creating and consuming PowerShell scripts, it can be applied to the major stages of software development – test, build, release. By using the methods associated with this, we can look at improving the quality of PowerShell code we deliver.</p>
+<h3 id="why-do-code-testing"><a class="toclink" href="../../2022/03/06/powershell-quality-of-life-improvements--code-testing/#why-do-code-testing">Why Do Code Testing?</a></h3>
+<p>Code testing can cover a broad spectrum of activities. At the most basic end is syntax checking or a “linter” to perform static code checking. At the complex end, there’s things like unit tests. For the sake of this example, I’ll be using a “linter”, the PS Script Analyzer. By using such a tool on our code, we can establish whether it meets minimum quality requirements. PS Script Analyzer comes with an array of built-in rules and can be extended with your own rules.</p>
+<h3 id="creating-the-code-test-pipeline"><a class="toclink" href="../../2022/03/06/powershell-quality-of-life-improvements--code-testing/#creating-the-code-test-pipeline">Creating The Code Test Pipeline</a></h3>
+<p>The first step is to create a pipeline that will perform the code testing activities. In my case, I’m using Azure DevOps, but a similar approach can be used with Github. The pipeline itself is relatively simple, with two tasks. One will install the PS Script Analyzer module, as it’s not installed by default on Azure DevOps agents. The second task will execute the analysis process. The pipeline code is shown below:</p>
+
+    
+      <nav class="md-post__action">
+        <a href="../../2022/03/06/powershell-quality-of-life-improvements--code-testing/">
+          Continue reading
+        </a>
+      </nav>
+    
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2020-08-14 00:00:00+00:00">August 14, 2020</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../vrealize-automation/" class="md-meta__link">vRealize Automation</a>, 
+              <a href="../vrealize-orchestration/" class="md-meta__link">vRealize Orchestration</a>, 
+              <a href="./" class="md-meta__link">Powershell</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              6 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="vravro-81-powershell-peaking-under-the-hood"><a class="toclink" href="../../2020/08/14/vravro-81-powershell--peaking-under-the-hood/">vRA/vRO 8.1 Powershell – Peaking Under The Hood</a></h2>
+<p>One of the new features in vRealize Automation (vRA) and vRealize Orchestrator (vRO) 8.1 was support for PowerShell. This means there are now 4 scripting language options for Action Based Extensibility (ABX) in vRA and Workflows in vRO. In this post, I’m going to have a look at some of the technical details of the PowerShell implementation.</p>
+<h3 id="why-we-should-care"><a class="toclink" href="../../2020/08/14/vravro-81-powershell--peaking-under-the-hood/#why-we-should-care">Why We Should Care</a></h3>
+<p>There’s two items that come to mind about why we should care about the PowerShell implementation. The first relates to the history of PowerShell itself. Up until 2016, PowerShell had been based upon the full .NET framework. In that year, Microsoft announced PowerShell Core, which was based on .NET Core. This allowed PowerShell to be used on non-Windows platforms like Linux. This new “branch” of PowerShell had reduced functionality, with many modules no longer working. Eventually PowerShell Core was re-branded to a 6.x version line. In March 2020, PowerShell 7 was released. This version was an attempt to close the gap in functionality between the two branches.</p>
+<p>The second item is how PowerShell was used in vRA/vRO 7.x. In 7.x it was possible to <a href="https://blog.jpboyce.org/2019/01/02/vrealize-orchestrator-powershell-hosts/">add a PowerShell host</a>. The PowerShell host was a Windows system configured to allow vRO to remote into it to execute commands. This created an incredible amount of flexibility because you could install any modules you liked on the host. On the down side, it added complexity (more moving parts to manage) and security issues (like ensuring the PowerShell Host had a network path to each target, and Kerberos double-hopping issues).</p>
+<p>With this background in mind, it becomes relevant to figure out what implementation of PowerShell is used in vRA/vRO and other information about the implementation.</p>
+
+    
+      <nav class="md-post__action">
+        <a href="../../2020/08/14/vravro-81-powershell--peaking-under-the-hood/">
+          Continue reading
+        </a>
+      </nav>
+    
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2020-06-22 00:00:00+00:00">June 22, 2020</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="./" class="md-meta__link">Powershell</a>, 
+              <a href="../vrealize-automation/" class="md-meta__link">vRealize Automation</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              4 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="bulk-add-flavor-mappings-using-vra-8-rest-api"><a class="toclink" href="../../2020/06/22/bulk-add-flavor-mappings-using-vra-8-rest-api/">Bulk Add Flavor Mappings Using vRA 8 REST API</a></h2>
+<p>One of the features added in vRealize Automation 8 (vRA 8) was Flavor Mappings. Flavor Mappings allow various instance types on different cloud providers to be associated with a platform-agnostic label. While it was possible to do something similar in vRA 7, it required a lot of scripting to handle the logic of the choice made. Like many of VMware’s newer products, vRA 8 has a REST API for executing most tasks, and this includes management of Flavor Mappings. Because adding these in bulk can be tedious, I looked at how it might be done with a bit of automation.</p>
+<h3 id="workflow-overview"><a class="toclink" href="../../2020/06/22/bulk-add-flavor-mappings-using-vra-8-rest-api/#workflow-overview">Workflow Overview</a></h3>
+<p>The <a href="https://code.vmware.com/docs/11453/vrealize-automation-8-1-api-programming-guide">vRealize Automation 8.1 API Programming Guide</a> is a good starting point for looking at automating tasks in vRA 8. It has the steps relating to getting authentication done, as well as some general administrative tasks. In the case of what I was trying to achieve, the general workflow looks like this:
+<img alt="Image" src="../../media/2020-06-22-001.png" /></p>
+
+    
+      <nav class="md-post__action">
+        <a href="../../2020/06/22/bulk-add-flavor-mappings-using-vra-8-rest-api/">
+          Continue reading
+        </a>
+      </nav>
+    
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2020-03-09 00:00:00+00:00">March 9, 2020</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="./" class="md-meta__link">Powershell</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              4 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="powershell-70-cmdlet-compatibility"><a class="toclink" href="../../2020/03/09/powershell-70--cmdlet-compatibility/">PowerShell 7.0 – Cmdlet Compatibility</a></h2>
+<p>In my <a href="https://blog.jpboyce.org/2020/03/06/powershell-7-0-introduction-history-installation/">first post</a> about PowerShell 7.0, I made mention of a major issue that most likely prevent adoption of PowerShell 6.x by Windows system administrators. This issue was the loss of functionality in 6.x, specifically that some cmdlets would not be available due to 6.x being built on .NET Core. The release of 7.0 is meant to help address this, which is the intent of this post.</p>
+<h3 id="cmdlet-compatibility-approach"><a class="toclink" href="../../2020/03/09/powershell-70--cmdlet-compatibility/#cmdlet-compatibility-approach">Cmdlet Compatibility Approach</a></h3>
+<p>In reviewing the compatibility for 5.1 and 7.0, I used the management server in my home lab. This is a Windows Server 2019 virtual machine, so it shares the common set of cmdlets that Windows 10 has. As a management server, it also has some additional modules/cmdlets available:</p>
+<ul>
+<li>Windows Server Role-based modules such as ActiveDirectory and DnsServer</li>
+<li>SQLPS from the installation of SQL Server 2014</li>
+<li>cmdlets associated with VMware’s PowerCLI</li>
+<li>cmdlets associated with ChefDK</li>
+<li>AWS’s PowerShell module</li>
+</ul>
+<p>While not comprehensive, this does give good coverage of built-in, Microsoft-provided and third-party provided items.</p>
+
+    
+      <nav class="md-post__action">
+        <a href="../../2020/03/09/powershell-70--cmdlet-compatibility/">
+          Continue reading
+        </a>
+      </nav>
+    
+  </div>
+</article>
+      
+      
+        
+          
+
+
+
+<nav class="md-pagination">
+  <span class="md-pagination__current">1</span> <a class="md-pagination__link" href="page/2/">2</a>
+</nav>
+        
+      
+    </div>
+  </div>
+
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/jpboyce" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/jpboyce/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+
+
+
+  
+
+
+<h4>Cookie consent</h4>
+<p>This website uses cookies to ensure you get the best experience on our website.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Accept</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Manage settings</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f1b6f286.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>
